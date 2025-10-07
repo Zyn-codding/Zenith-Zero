@@ -4,115 +4,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zenith-Zero — Panel UI (Demo)</title>
+  <title>Zenith-Zero — Panel</title>
   <style>
     :root{
       --bg:#05060a;
-      --card:#071025;
-      --glass: rgba(255,255,255,0.03);
       --neon:#14a3ff;
-      --neon-2:#0af;
       --accent: linear-gradient(90deg,var(--neon),#39f);
-      --radius:18px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
-    html,body{height:100%;margin:0;background:radial-gradient(1200px 600px at 10% 20%, rgba(20,160,255,0.06), transparent), radial-gradient(900px 450px at 90% 80%, rgba(10,200,255,0.03), transparent), var(--bg);color:#cfeeff}
-    .wrap{max-width:1100px;margin:40px auto;display:grid;grid-template-columns:420px 1fr;gap:28px;padding:24px}/* left card (login) */
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));border-radius:var(--radius);padding:28px;box-shadow:0 10px 30px rgba(2,8,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);border:1px solid rgba(20,160,255,0.06)}
-.brand{display:flex;align-items:center;gap:12px}
-.bolt{width:44px;height:44px;border-radius:12px;background:linear-gradient(180deg, rgba(20,160,255,0.12), rgba(20,160,255,0.06));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(20,160,255,0.08), 0 0 20px rgba(20,160,255,0.03)}
-.bolt:after{content:'⚡';font-size:22px;color:var(--neon)}
-h1{margin:0;font-size:28px;letter-spacing:0.6px;color:var(--neon);text-shadow:0 6px 26px rgba(20,160,255,0.12)}
-p.lead{margin:8px 0 20px;color:rgba(207,238,255,0.65);font-size:13px}
-
-.field{margin-bottom:12px}
-input[type=text], input[type=password]{width:100%;padding:14px;border-radius:12px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);color:#dff6ff;outline:none;font-size:14px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
-input::placeholder{color:rgba(207,238,255,0.28)}
-.btn{display:inline-block;padding:12px 22px;border-radius:12px;background:var(--accent);color:#001523;font-weight:700;border:none;cursor:pointer;box-shadow:0 8px 28px rgba(10,120,220,0.18);transition:transform .14s ease}
-.btn:active{transform:translateY(2px)}
-.muted-btn{background:transparent;border:1px solid rgba(20,160,255,0.12);color:var(--neon);padding:10px 16px;border-radius:10px}
-.small{font-size:13px}
-.footer{font-size:12px;color:rgba(207,238,255,0.45);margin-top:16px}
-
-/* right column cards */
-.grid-right{display:grid;grid-template-columns:1fr;gap:18px}
-.tool-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.06));padding:18px;border-radius:14px;border:1px solid rgba(20,160,255,0.04);box-shadow:0 8px 30px rgba(2,8,23,0.6)}
-.tool-title{font-weight:700;color:var(--neon);font-size:18px;display:flex;align-items:center;gap:10px}
-.tool-desc{font-size:13px;color:rgba(207,238,255,0.6);margin:10px 0}
+    html,body{height:100%;margin:0;background:radial-gradient(1200px 600px at 10% 20%, rgba(20,160,255,0.05), transparent), radial-gradient(900px 450px at 90% 80%, rgba(10,200,255,0.02), transparent), var(--bg);color:#cfeeff}
+    .container{max-width:980px;margin:36px auto;padding:20px}
+    .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .bolt{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg, rgba(20,160,255,0.12), rgba(20,160,255,0.06));display:flex;align-items:center;justify-content:center}
+    .bolt:after{content:'⚡';font-size:22px;color:var(--neon)}
+    h1{margin:0;font-size:24px;color:var(--neon)}
+    .accounts-toggle{background:transparent;border:1px solid rgba(20,160,255,0.06);color:var(--neon);padding:8px 12px;border-radius:10px;cursor:pointer}.grid{display:grid;grid-template-columns:1fr;gap:18px}
+.tool-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));padding:18px;border-radius:12px;border:1px solid rgba(20,160,255,0.04);box-shadow:0 8px 30px rgba(2,8,23,0.5)}
+.tool-title{font-weight:800;color:var(--neon);font-size:18px;display:flex;align-items:center;justify-content:space-between}
+.tool-desc{font-size:13px;color:rgba(207,238,255,0.7);margin:10px 0}
 .tool-action{display:flex;gap:12px}
-.ghost{background:linear-gradient(180deg, rgba(10,120,220,0.08), rgba(10,120,220,0.04));padding:10px 14px;border-radius:10px;color:var(--neon);border:1px solid rgba(20,160,255,0.06);cursor:pointer}
+.ghost{background:linear-gradient(180deg, rgba(10,120,220,0.06), rgba(10,120,220,0.03));padding:10px 14px;border-radius:10px;color:var(--neon);border:1px solid rgba(20,160,255,0.06);cursor:pointer}
 
-/* accounts modal */
-.accounts{margin-top:14px;background:linear-gradient(180deg, rgba(10,10,10,0.2), rgba(255,255,255,0.01));border-radius:12px;padding:12px;border:1px solid rgba(20,160,255,0.03)}
-pre{white-space:pre-wrap;background:transparent;padding:8px;border-radius:8px;font-size:13px;color:#dff6ff;margin:0}
-.pill{display:inline-block;padding:8px 10px;border-radius:999px;background:rgba(20,160,255,0.06);border:1px solid rgba(20,160,255,0.06);color:var(--neon);font-weight:600}
+.footer-card{margin-top:26px;background:linear-gradient(180deg, rgba(6,12,20,0.9), rgba(4,8,14,0.9));padding:18px;border-radius:12px;border:1px solid rgba(20,160,255,0.04)}
 
 /* overlay & toast */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:50}
-.modal{background:linear-gradient(180deg, rgba(6,12,20,0.95), rgba(4,8,14,0.95));padding:20px;border-radius:12px;width:360px;border:1px solid rgba(20,160,255,0.06)}
+.modal{background:linear-gradient(180deg, rgba(6,12,20,0.98), rgba(4,8,14,0.98));padding:20px;border-radius:12px;width:420px;border:1px solid rgba(20,160,255,0.06)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:-80px;background:linear-gradient(90deg,var(--neon),#39f);color:#001523;padding:10px 16px;border-radius:10px;font-weight:700;box-shadow:0 10px 30px rgba(20,160,255,0.15);z-index:60}
 
-/* responsive */
-@media (max-width:880px){.wrap{grid-template-columns:1fr;padding:16px}.card{order:2}.grid-right{order:1}.modal{width:92%}}
+pre{white-space:pre-wrap;background:transparent;padding:8px;border-radius:8px;font-size:13px;color:#dff6ff;margin:0}
+
+@media (max-width:520px){.modal{width:92%}}
 
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
+  <div class="container">
+    <div class="header">
       <div class="brand">
         <div class="bolt"></div>
         <div>
           <h1>Zenith-Zero</h1>
-          <div style="height:6px"></div>
-          <p class="lead">Access the ultimate demo control panel (UI-only). Tidak ada fungsi berbahaya — hanya tampilan.</p>
+          <div style="font-size:13px;color:rgba(207,238,255,0.7)">Control panel — UI only</div>
         </div>
-      </div><div style="height:12px"></div>
-  <div class="field"><input id="username" type="text" placeholder="Username" /></div>
-  <div class="field"><input id="key" type="password" placeholder="Key Akses" /></div>
-
-  <div style="display:flex;gap:12px;margin-top:10px">
-    <button class="btn" id="loginBtn">Masuk</button>
-    <button class="muted-btn" id="showAccounts">Show Accounts</button>
-  </div>
-
-  <div class="accounts" id="accountsBox" style="display:none">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <div class="pill">Role: Basic</div>
-      <div class="small" style="opacity:0.7">(Visual-only)</div>
+      </div>
+      <div>
+        <button class="accounts-toggle" id="showAccounts">Show Accounts</button>
+      </div>
+    </div><div class="grid">
+  <div class="tool-card" id="createCard">
+    <div class="tool-title">
+      <div>🔧 Create an account</div>
+      <div style="font-size:13px;color:rgba(207,238,255,0.6)">Admin Only</div>
     </div>
-    <pre id="basicList"></pre>
-
-    <div style="height:12px"></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-      <div class="pill">Role: Admin</div>
-    </div>
-    <pre id="adminList"></pre>
-  </div>
-
-  <div class="footer">© 2025 Zenith-Zero Network — Demo UI only</div>
-</div>
-
-<div class="grid-right">
-  <!-- Admin-only tool (Create an account) -->
-  <div class="tool-card" id="adminCreateCard">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div class="tool-title">🔧 Create an account</div>
-      <div class="small" style="color:rgba(207,238,255,0.55);">Admin Only</div>
-    </div>
-    <div class="tool-desc">Form create akun (UI-only). Tombol ini hanya tampilan dan tidak membuat akun nyata.</div>
+    <div class="tool-desc">Form create akun — tampilan saja.</div>
     <div class="tool-action"><button class="ghost" onclick="showCreateAccount()">Buka Create</button></div>
   </div>
 
   <div class="tool-card">
     <div class="tool-title">🍎 iPhone Spam</div>
-    <div class="tool-desc">Hanya untuk tampilan; tombol memunculkan simulasi pengiriman bug (UI-only).</div>
+    <div class="tool-desc">Tombol memunculkan form pengiriman bug (UI-only).</div>
     <div class="tool-action"><button class="ghost" onclick="openBugSender('iPhone Spam')">Masuk ke Eksekusi</button></div>
   </div>
 
   <div class="tool-card">
     <div class="tool-title">⏳ Delay All Device</div>
-    <div class="tool-desc">Simulasi delay — UI-only.</div>
+    <div class="tool-desc">Delay — UI-only.</div>
     <div class="tool-action"><button class="ghost" onclick="openBugSender('Delay All Device')">Masuk ke Eksekusi</button></div>
   </div>
 
@@ -122,14 +81,28 @@ pre{white-space:pre-wrap;background:transparent;padding:8px;border-radius:8px;fo
     <div class="tool-action"><button class="ghost" onclick="openBugSender('Blank UI Android')">Masuk ke Eksekusi</button></div>
   </div>
 
+  <div class="footer-card">
+    <div style="font-size:20px;color:var(--neon);font-weight:800">Zenith-Zero</div>
+    <div style="color:rgba(207,238,255,0.7);margin-top:6px">Access the demo control panel — UI-only.</div>
+  </div>
 </div>
 
-  </div>  <!-- overlay for create / bug sender -->  <div class="overlay" id="overlay">
-    <div class="modal" id="modalBox">
-      <!-- dynamic content -->
+  </div>  <!-- accounts panel (display-only) -->  <div class="overlay" id="accountsOverlay">
+    <div class="modal" id="accountsModal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div style="font-weight:800;color:var(--neon);">Accounts</div>
+        <button onclick="closeAccounts()" style="background:transparent;border:none;color:rgba(207,238,255,0.6);cursor:pointer;font-size:16px">✕</button>
+      </div>
+      <div style="font-size:13px;color:rgba(207,238,255,0.75);margin-bottom:8px">Role: Basic</div>
+      <pre id="basicList"></pre>
+      <div style="height:10px"></div>
+      <div style="font-size:13px;color:rgba(207,238,255,0.75);margin-bottom:8px">Role: Admin</div>
+      <pre id="adminList"></pre>
     </div>
-  </div>  <!-- toast -->  <div class="toast" id="toast" style="display:none">Notification</div>  <script>
-    // Accounts provided by user (display-only). No authentication is performed.
+  </div>  <!-- general overlay for modals -->  <div class="overlay" id="overlay">
+    <div class="modal" id="modalBox"></div>
+  </div>  <div class="toast" id="toast" style="display:none">Notification</div>  <script>
+    // account lists (display-only)
     const basic = `Username : Anomali_101
 Pw : Anomali101!
 
@@ -254,15 +227,9 @@ Pw : Dna$pulse46`;
     document.getElementById('adminList').textContent = admin;
 
     document.getElementById('showAccounts').addEventListener('click', ()=>{
-      const box = document.getElementById('accountsBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
+      document.getElementById('accountsOverlay').style.display = 'flex';
     });
-
-    document.getElementById('loginBtn').addEventListener('click', ()=>{
-      // purely cosmetic "login" feedback
-      const u = document.getElementById('username').value || 'guest';
-      alert('Halo, '+u+' — ini hanya demo UI. Tidak ada autentikasi nyata.');
-    });
+    function closeAccounts(){ document.getElementById('accountsOverlay').style.display = 'none'; }
 
     function showOverlay(contentHtml){
       const overlay = document.getElementById('overlay');
@@ -270,46 +237,37 @@ Pw : Dna$pulse46`;
       box.innerHTML = contentHtml;
       overlay.style.display = 'flex';
     }
-    function closeOverlay(){
-      document.getElementById('overlay').style.display = 'none';
-    }
+    function closeOverlay(){ document.getElementById('overlay').style.display = 'none'; }
 
-    // Create account view (admin)
     function showCreateAccount(){
       const html = `
         <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:12px\"> 
           <div style=\"font-weight:800;color:var(--neon);font-size:18px\">Create Account</div>
           <button onclick=\"closeOverlay()\" style=\"background:transparent;border:none;color:rgba(207,238,255,0.6);cursor:pointer;font-size:16px\">✕</button>
         </div>
-        <div style=\"font-size:13px;color:rgba(207,238,255,0.7);margin-bottom:10px\">Form visual saja — tekan Create untuk melihat notifikasi demo.</div>
-        <div class=\"field\"><input id=\"newUser\" type=\"text\" placeholder=\"New username\" /></div>
-        <div class=\"field\"><input id=\"newPass\" type=\"text\" placeholder=\"Password\" /></div>
-        <div style=\"display:flex;gap:10px;justify-content:flex-end;margin-top:8px\">
-          <button class=\"muted-btn\" onclick=\"closeOverlay()\">Cancel</button>
-          <button class=\"btn\" onclick=\"doCreate()\">Create</button>
+        <div style=\"font-size:13px;color:rgba(207,238,255,0.8);margin-bottom:10px\">Form create akun — tampilan saja.</div>
+        <div style=\"margin-bottom:8px\"><input id=\"newUser\" type=\"text\" placeholder=\"New username\" style=\"width:100%;padding:10px;border-radius:8px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);color:#dff6ff\" /></div>
+        <div style=\"margin-bottom:8px\"><input id=\"newPass\" type=\"text\" placeholder=\"Password\" style=\"width:100%;padding:10px;border-radius:8px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);color:#dff6ff\" /></div>
+        <div style=\"display:flex;gap:10px;justify-content:flex-end;margin-top:8px\"> 
+          <button class=\"ghost\" onclick=\"closeOverlay()\">Cancel</button>
+          <button class=\"ghost\" onclick=\"doCreate()\">Create</button>
         </div>
       `;
       showOverlay(html);
     }
+    function doCreate(){ closeOverlay(); showToast('Created (demo) — user will appear in UI only.'); }
 
-    function doCreate(){
-      // purely cosmetic create action: close overlay and show toast
-      closeOverlay();
-      showToast('Created (demo) — user will appear in UI only.');
-    }
-
-    // Bug sender simulation for other tools
     function openBugSender(bugType){
       const html = `
         <div style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:12px\"> 
           <div style=\"font-weight:800;color:var(--neon);font-size:18px\">${bugType}</div>
           <button onclick=\"closeOverlay()\" style=\"background:transparent;border:none;color:rgba(207,238,255,0.6);cursor:pointer;font-size:16px\">✕</button>
         </div>
-        <div style=\"font-size:13px;color:rgba(207,238,255,0.7);margin-bottom:10px\">Isi nomor target, lalu tekan SEND BUG (simulasi). Akan muncul notifikasi setelah 5 detik.</div>
-        <div class=\"field\"><input id=\"targetNum\" type=\"text\" placeholder=\"[ 62xxx ]\" /></div>
-        <div style=\"display:flex;gap:10px;justify-content:flex-end;margin-top:8px\">
-          <button class=\"muted-btn\" onclick=\"closeOverlay()\">Cancel</button>
-          <button class=\"btn\" id=\"sendBugBtn\" onclick=\"sendBug('${bugType}')\">[ SEND BUG ]</button>
+        <div style=\"font-size:13px;color:rgba(207,238,255,0.8);margin-bottom:10px\">Isi nomor target, lalu tekan SEND BUG. Akan muncul notifikasi setelah 5 detik.</div>
+        <div style=\"margin-bottom:8px\"><input id=\"targetNum\" type=\"text\" placeholder=\"[ 62xxx ]\" style=\"width:100%;padding:10px;border-radius:8px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.03);color:#dff6ff\" /></div>
+        <div style=\"display:flex;gap:10px;justify-content:flex-end;margin-top:8px\"> 
+          <button class=\"ghost\" onclick=\"closeOverlay()\">Cancel</button>
+          <button class=\"ghost\" id=\"sendBugBtn\" onclick=\"sendBug('${bugType}')\">[ SEND BUG ]</button>
         </div>
       `;
       showOverlay(html);
@@ -321,7 +279,6 @@ Pw : Dna$pulse46`;
       btn.disabled = true;
       btn.textContent = 'Sending...';
 
-      // wait 5 seconds (simulation)
       setTimeout(()=>{
         closeOverlay();
         btn.disabled = false;
@@ -330,23 +287,18 @@ Pw : Dna$pulse46`;
       }, 5000);
     }
 
-    // toast helper (slide from bottom)
     function showToast(msg){
       const t = document.getElementById('toast');
       t.textContent = msg;
       t.style.display = 'block';
-      // animate up
       t.animate([{transform:'translate(-50%, 120px)'},{transform:'translate(-50%, -20px)'}], {duration:380,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'});
-      // hide after 4s
       setTimeout(()=>{
         t.animate([{transform:'translate(-50%, -20px)'},{transform:'translate(-50%, 120px)'}], {duration:360,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'});
         setTimeout(()=> t.style.display='none', 370);
       },4000);
     }
 
-    // close overlay when clicking outside modal
-    document.getElementById('overlay').addEventListener('click', (e)=>{
-      if(e.target.id === 'overlay') closeOverlay();
-    });
+    document.getElementById('accountsOverlay').addEventListener('click', (e)=>{ if(e.target.id==='accountsOverlay') closeAccounts(); });
+    document.getElementById('overlay').addEventListener('click', (e)=>{ if(e.target.id==='overlay') closeOverlay(); });
   </script></body>
 </html>
